@@ -1,34 +1,63 @@
 
 import { ThemeConfig, SlideData } from './types';
 
+// Al-Tajer Digital Modern Color Palette
+export const COLORS = {
+  // Primary Colors
+  white: '#FFFFFF',
+  lightGray: '#F8FAFC',
+  electricBlue: '#2563EB',
+  charcoalBlack: '#0F172A',
+  darkGray: '#4B5563',
+  
+  // Accent Colors
+  mintGreen: '#10B981',
+  softPurple: '#8B5CF6',
+  alertOrange: '#F97316',
+  
+  // Gradients
+  blueGradient: 'linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)',
+  mintGradient: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+  purpleGradient: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)',
+};
+
 export const THEMES: ThemeConfig[] = [
   {
-    id: 'dark-neon',
-    name: 'نيون داكن',
-    primary: '#00ffa3',
-    secondary: '#111827',
-    bg: 'radial-gradient(circle at center, #111827 0%, #000000 100%)',
-    text: '#ffffff',
-    accent: '#00ffa3',
+    id: 'altajer-modern',
+    name: 'التاجر العصري',
+    primary: COLORS.electricBlue,
+    secondary: COLORS.charcoalBlack,
+    bg: `linear-gradient(180deg, ${COLORS.lightGray} 0%, ${COLORS.white} 100%)`,
+    text: COLORS.charcoalBlack,
+    accent: COLORS.mintGreen,
   },
   {
-    id: 'investor-blue',
-    name: 'أزرق المستثمر',
-    primary: '#3b82f6',
-    secondary: '#1e293b',
-    bg: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-    text: '#ffffff',
-    accent: '#60a5fa',
+    id: 'clean-white',
+    name: 'أبيض نقي',
+    primary: COLORS.electricBlue,
+    secondary: COLORS.darkGray,
+    bg: COLORS.white,
+    text: COLORS.charcoalBlack,
+    accent: COLORS.softPurple,
   },
   {
-    id: 'luxury-gold',
-    name: 'ذهبي فاخر',
-    primary: '#fbbf24',
-    secondary: '#1a1a1a',
-    bg: '#1a1a1a',
-    text: '#ffffff',
-    accent: '#d97706',
-  }
+    id: 'blue-professional',
+    name: 'أزرق احترافي',
+    primary: COLORS.electricBlue,
+    secondary: COLORS.charcoalBlack,
+    bg: 'linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%)',
+    text: COLORS.charcoalBlack,
+    accent: COLORS.mintGreen,
+  },
+  {
+    id: 'dark-modern',
+    name: 'داكن عصري',
+    primary: COLORS.electricBlue,
+    secondary: COLORS.charcoalBlack,
+    bg: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)',
+    text: COLORS.white,
+    accent: COLORS.mintGreen,
+  },
 ];
 
 export const LOGO_OPTIONS = [

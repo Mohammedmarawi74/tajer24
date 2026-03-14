@@ -6,7 +6,7 @@ import EditorSidebar from './components/EditorSidebar';
 import CanvasPreview from './components/CanvasPreview';
 import SlideNavigator from './components/SlideNavigator';
 import { exportAsPng } from './utils/export';
-import { ShieldCheck, Share2, Moon } from 'lucide-react';
+import { ShieldCheck, Share2, Moon, Sparkles, Zap, Globe2 } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<EditorState>({
@@ -60,11 +60,11 @@ const App: React.FC = () => {
       <header className="app-header">
         <div className="header-brand">
           <div className="brand-logo">
-            <ShieldCheck className="text-black" size={24} strokeWidth={2.5} />
+            <ShieldCheck className="text-white" size={24} strokeWidth={2.5} />
           </div>
           <div className="brand-text">
-            <h1 className="brand-title">رادار المستثمر</h1>
-            <p className="brand-subtitle">Investor Radar Builder</p>
+            <h1 className="brand-title">منصة التاجر الرقمية</h1>
+            <p className="brand-subtitle">Al-Tajer Digital Platform</p>
           </div>
         </div>
 
@@ -73,10 +73,10 @@ const App: React.FC = () => {
             <div className="vision-indicator" />
             <span className="vision-label">رؤية 2030</span>
           </div>
-          <button className="icon-button">
+          <button className="icon-button" title="مشاركة">
             <Share2 size={20} />
           </button>
-          <button className="icon-button">
+          <button className="icon-button" title="الوضع الداكن">
             <Moon size={20} />
           </button>
         </div>

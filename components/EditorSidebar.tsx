@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { EditorState, SlideData, ThemeConfig } from '../types';
 import { THEMES, LOGO_OPTIONS } from '../constants';
-import { Layout, Palette, Code, Image as ImageIcon, Plus, Trash2, Download, X } from 'lucide-react';
+import { Layout, Palette, Code, Image as ImageIcon, Plus, Trash2, Download, X, Sparkles, Shield, BarChart3, DollarSign, List } from 'lucide-react';
 
 interface EditorSidebarProps {
   state: EditorState;
@@ -13,13 +13,13 @@ interface EditorSidebarProps {
   onExport: () => void;
 }
 
-const EditorSidebar: React.FC<EditorSidebarProps> = ({ 
-  state, 
-  updateSlide, 
-  updateTheme, 
-  updateCss, 
-  addSlide, 
-  onExport 
+const EditorSidebar: React.FC<EditorSidebarProps> = ({
+  state,
+  updateSlide,
+  updateTheme,
+  updateCss,
+  addSlide,
+  onExport
 }) => {
   const [activeTab, setActiveTab] = useState<'content' | 'theme' | 'css'>('content');
   const activeSlide = state.slides.find(s => s.id === state.activeSlideId) || state.slides[0];
@@ -32,6 +32,28 @@ const EditorSidebar: React.FC<EditorSidebarProps> = ({
         updateSlide(activeSlide.id, { [field]: event.target?.result as string });
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const getSlideTypeIcon = (type: string) => {
+    switch (type) {
+      case 'TITLE': return <Layout size={16} />;
+      case 'CERTIFICATION': return <Shield size={16} />;
+      case 'CHART': return <BarChart3 size={16} />;
+      case 'PRICING': return <DollarSign size={16} />;
+      case 'STEPS': return <List size={16} />;
+      default: return <Layout size={16} />;
+    }
+  };
+
+  const getSlideTypeLabel = (type: string) => {
+    switch (type) {
+      case 'TITLE': return 'الرئيسية';
+      case 'CERTIFICATION': return 'الشهادات';
+      case 'CHART': return 'الرسم البياني';
+      case 'PRICING': return 'الأسعار';
+      case 'STEPS': return 'خطوات';
+      default: return type;
     }
   };
 
@@ -74,10 +96,10 @@ const EditorSidebar: React.FC<EditorSidebarProps> = ({
                     onClick={() => updateSlide(activeSlide.id, { type: type as any })}
                     className={`slide-type-btn ${activeSlide.type === type ? 'active' : ''}`}
                   >
-                    {type === 'TITLE' ? 'الرئيسية' :
-                     type === 'CERTIFICATION' ? 'الشهادات' :
-                     type === 'CHART' ? 'الرسم البياني' :
-                     type === 'PRICING' ? 'الأسعار' : 'خطوات'}
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      {getSlideTypeIcon(type)}
+                      {getSlideTypeLabel(type)}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -90,6 +112,7 @@ const EditorSidebar: React.FC<EditorSidebarProps> = ({
                     value={activeSlide.title}
                     onChange={(e) => updateSlide(activeSlide.id, { title: e.target.value })}
                     className="form-textarea"
+                    placeholder="أدخل عنوان الشريحة الرئيسي..."
                   />
                </div>
                <div className="form-group">
@@ -99,13 +122,14 @@ const EditorSidebar: React.FC<EditorSidebarProps> = ({
                     value={activeSlide.subtitle}
                     onChange={(e) => updateSlide(activeSlide.id, { subtitle: e.target.value })}
                     className="form-input"
+                    placeholder="أدخل الوصف الفرعي..."
                   />
                </div>
             </div>
 
             <div className="sidebar-section media-section">
               <label className="section-label">الشعار</label>
-              
+
               {/* Logo Selection Grid */}
               <div className="logo-selection-grid">
                 {LOGO_OPTIONS.map((logoOption) => (
@@ -135,7 +159,7 @@ const EditorSidebar: React.FC<EditorSidebarProps> = ({
               <div className="upload-divider">
                 <span>أو</span>
               </div>
-              
+
               <label className="media-upload">
                 <div className="media-upload-box">
                   <ImageIcon className="media-upload-icon" size={20} />
@@ -182,11 +206,11 @@ const EditorSidebar: React.FC<EditorSidebarProps> = ({
             <textarea
               value={state.customCss}
               onChange={(e) => updateCss(e.target.value)}
-              placeholder=".slide-canvas { font-family: 'Arial'; }"
+              placeholder=".slide-canvas { font-family: 'Cairo'; }"
               className="css-editor"
             />
             <p className="css-hint">
-              استخدم هذا المحرر لتغيير خصائص التنسيق بدقة. التغييرات تظهر لحظياً في المعاينة.
+              💡 استخدم هذا المحرر لتغيير خصائص التنسيق بدقة. التغييرات تظهر لحظياً في المعاينة.
             </p>
           </div>
         )}
