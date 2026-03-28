@@ -206,7 +206,7 @@ const EditorSidebar: React.FC<EditorSidebarProps> = ({
             <textarea
               value={state.customCss}
               onChange={(e) => updateCss(e.target.value)}
-              placeholder=".slide-canvas { font-family: 'Cairo'; }"
+              placeholder=".slide-canvas { font-family: 'IBM Plex Sans Arabic'; }"
               className="css-editor"
             />
             <p className="css-hint">

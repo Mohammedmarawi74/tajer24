@@ -28,9 +28,7 @@ Complete UI/UX modernization of the Investor Radar Carousel Builder to match Al-
 ## 🔤 Typography
 
 ### Arabic Fonts (Google Fonts)
-- **Cairo** - Primary font (Weights: 300-800)
-- **Tajawal** - Secondary font (Weights: 300-800)
-- **Almarai** - Alternative font (Weights: 300-800)
+- **IBM Plex Sans Arabic** - Primary font (Weights: 300-800)
 
 ### Text Styling
 - **Headlines**: Bold/Black weight, letter-spacing: -0.3px to -0.5px
